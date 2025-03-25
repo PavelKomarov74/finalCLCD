@@ -13,6 +13,15 @@ jobs:
       - name: Vet
         run: |
           go vet ./...
+  
+  lint:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-go@v4
+    
+      - uses: golangci/golangci-lint-action@v3        
 
   deploy:
     name: Push Docker image to Docker Hub
