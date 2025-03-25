@@ -8,6 +8,6 @@ RUN go mod download
 
 COPY . .
 
-RUN go build -o test-dock .
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o test-dock .
 
 CMD ["./test-dock"]
